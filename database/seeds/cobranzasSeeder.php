@@ -5,6 +5,7 @@ use App\Models\CompanyMeta;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class cobranzasSeeder extends Seeder
 {
@@ -15,8 +16,15 @@ class cobranzasSeeder extends Seeder
      */
     public function run()
     {
-        $encargados = User::where('company_id', 5)->get();
-    
+        /*
+        User::create([
+            'first_name' => 'Usuario 1000',
+            'password' => '1000',
+            'identificator' => '1000',
+            'chapa' => '1000',
+            'role_id' => 3
+        ]);*/
+    /*
 
         foreach($encargados as $encargado) {
 
@@ -46,6 +54,6 @@ class cobranzasSeeder extends Seeder
           
 
 
-        }
+        }*/
     }
 }

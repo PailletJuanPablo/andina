@@ -1,30 +1,38 @@
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="form-group">
             {!! Form::label('id', 'Identificador único:') !!}
             <p>{!! $cobranza->id !!}</p>
         </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-3">
         <!-- Operation Date Field -->
         <div class="form-group">
             {!! Form::label('operation_date', 'Registrado:') !!}
-            <p>{!! $cobranza->operation_date->format('d-m-Y') !!} a las {!! $cobranza->operation_date->format('h:m') !!}
+            <p>{!! $cobranza->formatted() !!} 
             </p>
 
         </div>
     </div>
 
 
-    <div class="col-md-4">
+    <div class="col-md-3">
         <!-- Operation Date Field -->
         <div class="form-group">
             {!! Form::label('ammount', 'Monto:') !!}
             <p>$ {!! $cobranza->ammount !!}</p>
         </div>
-
     </div>
+
+    <div class="col-md-3">
+        <!-- Operation Date Field -->
+        <div class="form-group">
+            {!! Form::label('ammount', 'Realizado por móvil:') !!}
+            <p> {!! $cobranza->user ? $cobranza->user->identificator : '' !!}</p>
+        </div>
+    </div>
+
 
 </div>
 

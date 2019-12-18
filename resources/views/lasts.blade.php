@@ -12,7 +12,7 @@
                 <th> Identificador</th>
                 <th>Ceco</th>
                 <th>Fecha y hora</th>
-
+                <th>Monto </th>
                 <th>Destinatario</th>
                 <th> </th>
               </tr>
@@ -23,6 +23,7 @@
                   <td>{{$cobranza->id}}</td>
                   <td>{{$cobranza->ceco ? $cobranza->ceco->title : 'No asignado'}}</td>
                   <td>{{$cobranza->formatted()}}</td>
+                  <td> $ {{$cobranza->ammount}}</td>
                   <td>{{$cobranza->name}}</td>
 
                   <td>
