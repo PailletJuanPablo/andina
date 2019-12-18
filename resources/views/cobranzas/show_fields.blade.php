@@ -72,7 +72,7 @@
 
     <div class="col-md-3">
         <div class="form-group">
-            {!! Form::label('destination_dni', 'Responsable:') !!}
+            {!! Form::label('destination_dni', 'Secretaria asignada:') !!}
             <p>{!! $cobranza->responsable->first_name !!} {!! $cobranza->responsable->last_name !!}</p>
         </div>
     </div>
