@@ -16,6 +16,9 @@ u807970725_rai
 
         </div>
         <!-- /.box-body -->
+            <h1 class="pull-right">
+           <a class="btn btn-primary pull-right bg-blue text-white" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('companyMetas.create') !!}">Añadir Nuevo  </a>
+        </h1>
     </div>
 </section>
 <div class="content">

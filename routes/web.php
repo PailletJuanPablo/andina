@@ -34,6 +34,7 @@ Route::get('vouchers/{company}', 'CobranzaController@vouchers')->name('vouchers'
 Route::get('vouchers_by_ceco/{cecoId}', 'CobranzaController@vouchersByCeco')->name('vouchersByCeco');
 Route::get('vouchers_periodo/', 'CobranzaController@periodo')->name('vouchersPeriodo');
 Route::get('vouchers_ceco_list', 'CobranzaController@getCecoList')->name('cecoLists');
-
+Route::post('switch/{id}', 'CobranzaController@changeStatus')->name('switchCobranzaStatus');
+Route::post('comments/{id}', 'CobranzaController@comments')->name('cobranzaComments');
 
 Route::get('/periodo_anterior', 'CobranzaController@old')->name('periodo_anterior');

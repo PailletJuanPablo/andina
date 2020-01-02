@@ -261,4 +261,19 @@ class CobranzaController extends AppBaseController
         return view('cobranzas.index', $data);
     }
 
+    public function changeStatus($id, Request $request) {
+        $cobranza = Cobranza::find($id);
+        $cobranza->status = $request->status;
+        $cobranza->save();
+        return redirect()->back();
+    }
+
+    public function comments($id, Request $request) {
+        $cobranza = Cobranza::find($id);
+        $cobranza->comments = $request->comments;
+        $cobranza->save();
+        return redirect()->back();
+
+    }
+
 }

@@ -98,4 +98,19 @@
             <p>{!! $cobranza->destination !!}</p>
         </div>
     </div>
+
+    <div class="col-md-12">
+     <form method="post" action="{{route('cobranzaComments', $cobranza->id)}}" >
+                    @csrf
+                <div class="form-group">
+                    <label for="comments">Agregar Observaciones</label>
+                    <textarea class="form-control" 
+                    
+                    name="comments" id="comments" rows="3"> {{$cobranza->comments}}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary bg-red text-white"> Guardar </button>
+        </form>
+    </div>    
+
+
 </div>

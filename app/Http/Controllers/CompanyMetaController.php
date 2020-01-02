@@ -60,7 +60,7 @@ class CompanyMetaController extends AppBaseController
 
         $companyMeta = $this->companyMetaRepository->create($input);
 
-        Flash::success('Company Meta saved successfully.');
+        Flash::success('Guardado correctamente');
 
         return redirect(route('companyMetas.index'));
     }
