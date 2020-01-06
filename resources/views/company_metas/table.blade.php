@@ -3,15 +3,15 @@
         <thead>
             <tr>
                 <th>Identificador</th>
-        <th>Secretaria Asignada</th>
-                <th colspan="3">Acciones</th>
+                <th>Secretaria Asignada</th>
+                <th >Acciones</th>
             </tr>
         </thead>
         <tbody>
         @foreach($companyMetas as $companyMeta)
             <tr>
                 <td>{!! $companyMeta->title !!}</td>
-            <td>{!! $companyMeta->user ? $companyMeta->user->first_name . ' ' . $companyMeta->user->last_name : 'Sin asignar' !!} </td>
+                 <td>{!! $companyMeta->user ? $companyMeta->user->first_name . ' ' . $companyMeta->user->last_name : 'Sin asignar' !!} </td>
                 <td>
                     {!! Form::open(['route' => ['companyMetas.destroy', $companyMeta->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

@@ -1,10 +1,4 @@
 
-@if(Auth::user()->role_id == 6)
-<li class="{{ Request::is('users*') ? 'active' : '' }}">
-    <a href="{!! route('users.index') !!}"><i class="fa fa-edit"></i><span>Usuarios</span></a>
-</li>
-@endif
-
 @if(Auth::user()->role_id == 1)
 <li class="{{ Request::is('companies*') ? 'active' : '' }}">
         <a href="{!! route('companies.index') !!}"><i class="fa fa-edit"></i><span>Companies</span></a>
@@ -17,8 +11,26 @@
     
 
 @if(Auth::user()->role_id == 6)
+<li class="{{ Request::is('users*') ? 'active' : '' }}">
+    <a href="{!! route('users.index') !!}"><i class="fa fa-edit"></i><span>Gestión Usuarios</span></a>
+</li>
+@endif
+
+@if(Auth::user()->role_id == 6)
+<li class="{{ Request::is('all_vouchers*') ? 'active' : '' }}">
+    <a href="{!! route('all') !!}"><i class="fa fa-edit"></i><span> Listado Completo </span></a>
+</li>
+@endif
+
+
+@if(Auth::user()->role_id == 6)
 <li class="{{ Request::is('companyMetas*') ? 'active' : '' }}">
-    <a href="{!! route('companyMetas.index') !!}"><i class="fa fa-edit"></i><span> CECOS </span></a>
+    <a href="{!! route('companyMetas.index') !!}"><i class="fa fa-edit"></i><span>Gestión CECOS </span></a>
+</li>
+@endif
+@if(Auth::user()->role_id == 6)
+<li class="{{ Request::is('companyMetas*') ? 'active' : '' }}">
+    <a href="{!! route('companyMetas.index') !!}"><i class="fa fa-edit"></i><span>Gestión CECOS </span></a>
 </li>
 @endif
 <li class="{{ Request::is('cobranzas*') ? 'active' : '' }}">
@@ -32,9 +44,12 @@
     <a href="{!! route('cecoLists') !!}"><i class="fa fa-edit"></i><span>Vouchers por CECO</span></a>
 </li>
 
+@if(Auth::user()->role_id != 6)
+
 <li class="{{ Request::is('vouchers_periodo*') ? 'active' : '' }}">
     <a href="{!! route('vouchersPeriodo') !!}"><i class="fa fa-edit"></i><span>Vouchers histórico</span></a>
 </li>
+@endif
 
 
 

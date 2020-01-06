@@ -27,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+     //   'password', 'remember_token',
     ];
 
     /**
@@ -39,20 +39,28 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function getCecos() {
-        $cecos = CompanyMeta::where('user_id', $this->id)->get();
+    public function getCecos()
+    {
+        if ($this->role_id == 6) {
+            $cecos = CompanyMeta::get();
+        } else {
+            $cecos = CompanyMeta::where('user_id', $this->id)->get();
+        }
         return $cecos;
     }
 
-    public function getCobranzas() {
+    public function getCobranzas()
+    {
         return Cobranza::where('employee_id', $this->id)->get();
     }
 
-    public function company() {
+    public function company()
+    {
         return $this->belongsTo('App\Models\Company');
     }
 
-    public function getLasts() {
+    public function getLasts()
+    {
         $cobranzas = Cobranza::where('employee_id', $this->id)->orderBy('operation_date', 'DESC')->limit(10)->get();
         return $cobranzas;
     }

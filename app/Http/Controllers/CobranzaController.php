@@ -39,7 +39,7 @@ class CobranzaController extends AppBaseController
         $from = Carbon::now()->lessThan($halfOfMonth) ? $startOfMonth : $halfOfMonth;
         $to = Carbon::now()->lessThan($halfOfMonth) ? $halfOfMonth : Carbon::now()->lastOfMonth();
 
-        $cobranzas = Cobranza::where('employee_id',  Auth::user()->id)
+        $cobranzas = Cobranza::where('employee_id', Auth::user()->id)
             ->whereBetween('operation_date', [$from, $to])
             ->orderBy('operation_date', 'DESC')
             ->get();
@@ -204,7 +204,6 @@ class CobranzaController extends AppBaseController
 
     public function periodo(Request $request)
     {
-
         $data['title'] = 'Vouchers de período';
         if ($request->has('month') && $request->has('year') && $request->has('period')) {
             $year = $request->query('year');
@@ -221,10 +220,9 @@ class CobranzaController extends AppBaseController
             $cobranzas = Cobranza::whereBetween('operation_date', [$from, $to])
             ->orderBy('operation_date', 'DESC');
 
-            if($request->has('ceco')) {
-                if($request->query('ceco') != 'all') {
+            if ($request->has('ceco')) {
+                if ($request->query('ceco') != 'all') {
                     $cobranzas->where('ceco_id', $request->query('ceco'));
-
                 }
             }
             $data['cobranzas'] = $cobranzas->where('employee_id', Auth::user()->id)->get();
@@ -249,7 +247,7 @@ class CobranzaController extends AppBaseController
         $from = Carbon::now()->lessThan($halfOfMonth) ? $startOfMonth->subDays(15) : $halfOfMonth->subDays(15);
         $to = Carbon::now()->lessThan($halfOfMonth) ? $halfOfMonth->subDays(15) : Carbon::now()->lastOfMonth()->subDays(15);
 
-        $cobranzas = Cobranza::where('employee_id',  Auth::user()->id)
+        $cobranzas = Cobranza::where('employee_id', Auth::user()->id)
             ->whereBetween('operation_date', [$from, $to])
             ->orderBy('operation_date', 'DESC')
             ->get();
@@ -261,19 +259,56 @@ class CobranzaController extends AppBaseController
         return view('cobranzas.index', $data);
     }
 
-    public function changeStatus($id, Request $request) {
+    public function all(Request $request)
+    {
+        $data['title'] = 'Listado de todos los vouchers';
+        $data['description'] = 'Esta sección permite visualizar un histórico de todos los vouchers registrados, sin importar limitación por CECO asginado';
+
+        if ($request->has('month') && $request->has('year') && $request->has('period')) {
+            $year = $request->query('year');
+            $month = $request->query('month');
+
+            $data['year'] = $request->query('year');
+            $data['month'] = $request->query('month');
+
+
+            $from = Carbon::createFromFormat('d-m-Y', "1-$month-$year");
+            $to = Carbon::createFromFormat('d-m-Y', "1-$month-$year")->addDays(15);
+
+            if ($request->query('period') == 2) {
+                $from = Carbon::createFromFormat('d-m-Y', "16-$month-$year");
+                $to = Carbon::createFromFormat('d-m-Y', "15-$month-$year")->lastOfMonth();
+            }
+
+            $cobranzas = Cobranza::whereBetween('operation_date', [$from, $to])
+            ->orderBy('operation_date', 'DESC');
+
+            if ($request->has('ceco')) {
+                $data['selectedCeco'] = $request->query('ceco');
+            }
+            if ($request->query('ceco') != 'all') {
+                $data['cobranzas'] = $cobranzas->where('ceco_id', $request->query('ceco'))->get();
+            } else {
+                $data['cobranzas'] = $cobranzas->whereNotNull('ceco_id')->get();
+            }
+        }
+      
+        return view('cobranzas.history', $data);
+    }
+
+    public function changeStatus($id, Request $request)
+    {
         $cobranza = Cobranza::find($id);
         $cobranza->status = $request->status;
         $cobranza->save();
         return redirect()->back();
     }
 
-    public function comments($id, Request $request) {
+    public function comments($id, Request $request)
+    {
         $cobranza = Cobranza::find($id);
         $cobranza->comments = $request->comments;
         $cobranza->save();
         return redirect()->back();
-
     }
-
 }

@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap-material-design.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/ripples.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/MaterialAdminLTE.min.css')}}">
-    @include('layouts.datatables_css');
+    @include('layouts.datatables_css')
 
     <link rel="stylesheet" href="{{asset('css/skins/all-md-skins.min.css')}}">
     @yield('css')

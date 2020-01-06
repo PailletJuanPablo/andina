@@ -56,9 +56,24 @@ class UserController extends AppBaseController
     {
         $input = $request->all();
 
-        $user = $this->userRepository->create($input);
 
-        Flash::success('User saved successfully.');
+        $user = new User();
+        $deleted =  User::withTrashed()
+        ->where('email', $request->email)
+        ->first();
+        if($deleted) {
+            $deleted->restore();
+            $user = $deleted;
+        }
+
+        $user->fill($request->except('password'));
+
+        if($request->password && $request->password != '') {
+            $user->password = Hash::make($request->password);
+        }
+        $user->save();
+        
+        Flash::success('Usuario creado.');
 
         return redirect(route('users.index'));
     }
@@ -121,9 +136,15 @@ class UserController extends AppBaseController
             return redirect(route('users.index'));
         }
 
-        $user = $this->userRepository->update($request->all(), $id);
+        $user->fill($request->except('password'));
 
-        Flash::success('User updated successfully.');
+        if($request->password && $request->password != '') {
+            $user->password = Hash::make($request->password);
+        }
+        $user->save();
+
+
+        Flash::success('Usuario actualizado');
 
         return redirect(route('users.index'));
     }
@@ -154,10 +175,5 @@ class UserController extends AppBaseController
         return redirect(route('users.index'));
     }
 
-    public function test(Request $request) {
-        $user = User::find(1);
-        $user->password = Hash::make('123456');
-        $user->save();
-        return $user;
-    }
+   
 }

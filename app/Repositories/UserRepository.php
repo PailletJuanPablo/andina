@@ -48,4 +48,30 @@ class UserRepository extends BaseRepository
     {
         return User::class;
     }
+
+     public function allQuery($search = [], $skip = null, $limit = null)
+    {
+        $query = $this->model->newQuery();
+
+        if (count($search)) {
+            foreach($search as $key => $value) {
+                if (in_array($key, $this->getFieldsSearchable())) {
+                    $query->where($key, $value);
+                }
+            }
+        }
+
+        $query->where('company_id', 5);
+
+        if (!is_null($skip)) {
+            $query->skip($skip);
+        }
+
+        if (!is_null($limit)) {
+            $query->limit($limit);
+        }
+
+        return $query;
+    }
+
 }

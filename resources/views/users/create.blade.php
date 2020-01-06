@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            User
+            Crear Usuario
         </h1>
     </section>
     <div class="content">
@@ -14,7 +14,7 @@
                 <div class="row">
                     {!! Form::open(['route' => 'users.store']) !!}
 
-                        @include('users.fields')
+                        @include('users.fields', ['editing' => false])
 
                     {!! Form::close() !!}
                 </div>

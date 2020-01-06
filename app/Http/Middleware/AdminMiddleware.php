@@ -16,9 +16,9 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-       /* if(Auth::user()->role_id != 1) {
+        if(Auth::user()->role_id != 6) {
             return redirect()->route('home');
-        }*/
+        }
         return $next($request);
     }
 }

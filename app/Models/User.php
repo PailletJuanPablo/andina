@@ -79,12 +79,22 @@ class User extends Model
      */
     public static $rules = [
         'password' => 'required',
+        'email'=> 'required',
+        'first_name' => 'required',
+        'last_name' => 'required',
         'role_id' => 'required'
     ];
 
-    public function company() {
+    public static $editingRules = [
+        'email'=> 'required',
+        'first_name' => 'required',
+        'last_name' => 'required',
+        'role_id' => 'required'
+    ];
+
+
+    public function company()
+    {
         return $this->belongsTo(Company::class);
     }
-
-    
 }
