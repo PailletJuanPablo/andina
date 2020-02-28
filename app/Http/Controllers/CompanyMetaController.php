@@ -30,7 +30,7 @@ class CompanyMetaController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $companyMetas = $this->companyMetaRepository->all();
+        $companyMetas = $this->companyMetaRepository->all(['company_id' => 5]);
 
         return view('company_metas.index')
             ->with('companyMetas', $companyMetas);

@@ -28,11 +28,7 @@
     <a href="{!! route('companyMetas.index') !!}"><i class="fa fa-edit"></i><span>Gestión CECOS </span></a>
 </li>
 @endif
-@if(Auth::user()->role_id == 6)
-<li class="{{ Request::is('companyMetas*') ? 'active' : '' }}">
-    <a href="{!! route('companyMetas.index') !!}"><i class="fa fa-edit"></i><span>Gestión CECOS </span></a>
-</li>
-@endif
+
 <li class="{{ Request::is('cobranzas*') ? 'active' : '' }}">
     <a href="{!! route('cobranzas.index') !!}"><i class="fa fa-edit"></i><span>Vouchers del período actual</span></a>
 </li>
