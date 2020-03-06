@@ -35,7 +35,8 @@ class CobranzaController extends AppBaseController
     {
         $data['title'] = 'Listado de Vouchers';
         $startOfMonth = Carbon::now()->firstOfMonth();
-        $halfOfMonth = $startOfMonth->addDays(15);
+        $halfOfMonth = Carbon::now()->firstOfMonth()->addDays(15);
+       
         $from = Carbon::now()->lessThan($halfOfMonth) ? $startOfMonth : $halfOfMonth;
         $to = Carbon::now()->lessThan($halfOfMonth) ? $halfOfMonth : Carbon::now()->lastOfMonth();
 
