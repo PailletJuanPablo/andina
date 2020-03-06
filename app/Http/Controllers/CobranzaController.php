@@ -41,8 +41,8 @@ class CobranzaController extends AppBaseController
         $to = Carbon::now()->lessThan($halfOfMonth) ? $halfOfMonth : Carbon::now()->lastOfMonth();
 
         $cobranzas = Cobranza::
-       
-            whereBetween('operation_date', [$from, $to])
+            where('company_id', 5)
+            ->whereBetween('operation_date', [$from, $to])
             ->orderBy('operation_date', 'DESC')
             ->get();
         $data['cobranzas'] = $cobranzas;
