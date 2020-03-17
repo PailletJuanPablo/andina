@@ -188,7 +188,7 @@ class CobranzaController extends AppBaseController
 
         $data['title'] = 'Vouchers de Ceco ' . $ceco->title;
         $startOfMonth = Carbon::now()->firstOfMonth();
-        $halfOfMonth = $startOfMonth->addDays(15);
+        $halfOfMonth = Carbon::now()->firstOfMonth()->addDays(15);
         $from = Carbon::now()->lessThan($halfOfMonth) ? $startOfMonth : $halfOfMonth;
         $to = Carbon::now()->lessThan($halfOfMonth) ? $halfOfMonth : Carbon::now()->lastOfMonth();
 
@@ -227,7 +227,10 @@ class CobranzaController extends AppBaseController
                     $cobranzas->where('ceco_id', $request->query('ceco'));
                 }
             }
-            $data['cobranzas'] = $cobranzas->where('employee_id', Auth::user()->id)->get();
+            $data['cobranzas'] = $cobranzas
+          //  ->where('employee_id', Auth::user()->id)
+            
+            ->get();
         }
 
 
@@ -246,13 +249,24 @@ class CobranzaController extends AppBaseController
         $data['title'] = 'Vouchers período anterior';
         $startOfMonth = Carbon::now()->firstOfMonth();
         $halfOfMonth = Carbon::now()->firstOfMonth()->addDays(15);
-        $from = Carbon::now()->lessThan($halfOfMonth) ? $startOfMonth->subDays(15) : $halfOfMonth->subDays(15);
-        $to = Carbon::now()->lessThan($halfOfMonth) ? $halfOfMonth->subDays(15) : Carbon::now()->lastOfMonth()->subDays(15);
+        $from = Carbon::now()->lessThan($halfOfMonth) ? Carbon::now()->firstOfMonth()->subDays(15) : Carbon::now()->firstOfMonth()->addDays(15)->subDays(15);
+        $to = Carbon::now()->lessThan($halfOfMonth) ? Carbon::now()->firstOfMonth()->addDays(15)->subDays(15) : Carbon::now()->lastOfMonth()->subDays(15);
 
-        $cobranzas = Cobranza::where('employee_id', Auth::user()->id)
+        if(Auth::user()->role_id == 6) {
+            $cobranzas = Cobranza::
+            where('company_id', 5)
             ->whereBetween('operation_date', [$from, $to])
             ->orderBy('operation_date', 'DESC')
             ->get();
+        } else {
+             $cobranzas = Cobranza::
+        
+         //    where('employee_id', Auth::user()->id)
+            ->whereBetween('operation_date', [$from, $to])
+            ->orderBy('operation_date', 'DESC')
+            ->get();
+        }
+       
         $data['cobranzas'] = $cobranzas;
 
         $data['description'] = 'Pertencientes a la liquidación del período ' . $from->format('d-m-Y') . ' a ' . $to->format('d-m-Y');
