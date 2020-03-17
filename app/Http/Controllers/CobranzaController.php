@@ -194,6 +194,7 @@ class CobranzaController extends AppBaseController
 
 
         $cobranzas = Cobranza::where('ceco_id', $ceco->id)
+        ->where('company_id', 5)
             ->whereBetween('operation_date', [$from, $to])
             ->orderBy('operation_date', 'DESC')
             ->get();
@@ -220,6 +221,7 @@ class CobranzaController extends AppBaseController
             }
 
             $cobranzas = Cobranza::whereBetween('operation_date', [$from, $to])
+
             ->orderBy('operation_date', 'DESC');
 
             if ($request->has('ceco')) {
@@ -229,7 +231,7 @@ class CobranzaController extends AppBaseController
             }
             $data['cobranzas'] = $cobranzas
           //  ->where('employee_id', Auth::user()->id)
-            
+            ->where('company_id', 5)
             ->get();
         }
 
@@ -260,7 +262,7 @@ class CobranzaController extends AppBaseController
             ->get();
         } else {
              $cobranzas = Cobranza::
-        
+        where('company_id', 5)->
          //    where('employee_id', Auth::user()->id)
             whereBetween('operation_date', [$from, $to])
             ->orderBy('operation_date', 'DESC')
@@ -296,7 +298,7 @@ class CobranzaController extends AppBaseController
                 $to = Carbon::createFromFormat('d-m-Y', "15-$month-$year")->lastOfMonth();
             }
 
-            $cobranzas = Cobranza::whereBetween('operation_date', [$from, $to])
+            $cobranzas = Cobranza::whereBetween('operation_date', [$from, $to])->where('company_id', 5)
             ->orderBy('operation_date', 'DESC');
 
             if ($request->has('ceco')) {
