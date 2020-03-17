@@ -262,7 +262,7 @@ class CobranzaController extends AppBaseController
              $cobranzas = Cobranza::
         
          //    where('employee_id', Auth::user()->id)
-            ->whereBetween('operation_date', [$from, $to])
+            whereBetween('operation_date', [$from, $to])
             ->orderBy('operation_date', 'DESC')
             ->get();
         }
