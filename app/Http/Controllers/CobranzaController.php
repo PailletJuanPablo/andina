@@ -230,7 +230,7 @@ class CobranzaController extends AppBaseController
                 }
             }
             $data['cobranzas'] = $cobranzas
-          //  ->where('employee_id', Auth::user()->id)
+            ->where('employee_id', Auth::user()->id)
             ->where('company_id', 5)
             ->get();
         }
@@ -263,7 +263,7 @@ class CobranzaController extends AppBaseController
         } else {
              $cobranzas = Cobranza::
         where('company_id', 5)->
-         //    where('employee_id', Auth::user()->id)
+             where('employee_id', Auth::user()->id)
             whereBetween('operation_date', [$from, $to])
             ->orderBy('operation_date', 'DESC')
             ->get();
@@ -292,6 +292,8 @@ class CobranzaController extends AppBaseController
 
             $from = Carbon::createFromFormat('d-m-Y', "1-$month-$year");
             $to = Carbon::createFromFormat('d-m-Y', "1-$month-$year")->addDays(15);
+
+          
 
             if ($request->query('period') == 2) {
                 $from = Carbon::createFromFormat('d-m-Y', "16-$month-$year");
