@@ -8,7 +8,7 @@
             <div class="pull-left image">
 
                 @if (Auth::user()->company || Auth::user()->company_id == 5)
-                <img src="{{asset('images/coke.png')}}" class="img-circle" alt="RAI Empresas" />
+                <img src="{{asset('images/ml.png')}}" class="img-circle" alt="RAI Empresas" />
                 @else
                 <img src="{{asset('images/logo_rai.png')}}" class="img-circle" alt="RAI Empresas" />
                 @endif

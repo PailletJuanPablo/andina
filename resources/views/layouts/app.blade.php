@@ -34,9 +34,12 @@
 
     <link rel="stylesheet" href="{{asset('css/skins/all-md-skins.min.css')}}">
     @yield('css')
+
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+
 </head>
 
-<body class="skin-red-light sidebar-mini">
+<body class="skin-yellow-light sidebar-mini">
     @if (!Auth::guest())
     <div class="wrapper">
         <!-- Main Header -->
@@ -63,7 +66,7 @@
                                 <!-- The user image in the navbar-->
 
                                 @if (Auth::user()->company)
-                                <img src="{{asset('images/coke.png')}}" class="user-image" alt="RAI Empresas" />
+                                <img src="{{asset('images/ml.png')}}" class="user-image" alt="RAI Empresas" />
                                 @else
                                 <img src="{{asset('images/logo_rai.png')}}" style="background: white" class="user-image"
                                     alt="RAI Empresas" />
@@ -78,7 +81,7 @@
                                 <li class="user-header">
 
                                     @if (Auth::user()->company)
-                                    <img src="{{asset('images/coke.png')}}" class="img-circle" alt="RAI Empresas" />
+                                    <img src="{{asset('images/ml.png')}}" class="img-circle" alt="RAI Empresas" />
                                     @else
                                     <img src="{{asset('images/logo_rai.png')}}" style="background: white"
                                         class="img-circle" alt="RAI Empresas" />

@@ -30,7 +30,7 @@ class CompanyMetaController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $companyMetas = $this->companyMetaRepository->all(['company_id' => 5]);
+        $companyMetas = $this->companyMetaRepository->all(['company_id' => 9]);
 
         return view('company_metas.index')
             ->with('companyMetas', $companyMetas);
@@ -43,7 +43,7 @@ class CompanyMetaController extends AppBaseController
      */
     public function create()
     {
-        $data['users'] = User::where('company_id', 5)->get();
+        $data['users'] = User::where('company_id', 9)->get();
         return view('company_metas.create', $data);
     }
 
@@ -58,6 +58,7 @@ class CompanyMetaController extends AppBaseController
     {
         $input = $request->all();
 
+        $input->company_id = 9;
         $companyMeta = $this->companyMetaRepository->create($input);
 
         Flash::success('Guardado correctamente');
@@ -102,7 +103,7 @@ class CompanyMetaController extends AppBaseController
 
             return redirect(route('companyMetas.index'));
         }
-        $data['users'] = User::where('company_id', 5)->get();
+        $data['users'] = User::where('company_id', 9)->get();
         $data['companyMeta'] = $companyMeta;
         return view('company_metas.edit', $data);
     }

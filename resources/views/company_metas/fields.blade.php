@@ -6,7 +6,7 @@
 
 <!-- User Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('user_id', 'Secretaria Asignada') !!}
+    {!! Form::label('user_id', 'Responsable Asignado') !!}
     <select class="select2 form-control" id="user_id" name="user_id" >
             @foreach ($users as $user)                                     
                  <option value="{{$user->id}}">{{$user? $user->first_name : '' }} {{$user ? $user->last_name : ''}}</option>

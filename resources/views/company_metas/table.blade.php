@@ -3,7 +3,7 @@
         <thead>
             <tr>
                 <th>Identificador</th>
-                <th>Secretaria Asignada</th>
+                <th>Responsable Asignada</th>
                 <th >Acciones</th>
             </tr>
         </thead>

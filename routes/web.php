@@ -49,3 +49,6 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 });
 
 
+
+
+Route::resource('mlClients', 'MlClientController');

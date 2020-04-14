@@ -42,7 +42,7 @@ class User extends Authenticatable
     public function getCecos()
     {
         if ($this->role_id == 6) {
-            $cecos = CompanyMeta::get();
+            $cecos = CompanyMeta::where('company_id', 9)->get();
         } else {
             $cecos = CompanyMeta::where('user_id', $this->id)->get();
         }

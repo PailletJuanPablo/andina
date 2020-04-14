@@ -54,3 +54,7 @@
     <a href="{!! route('notifications.index') !!}"><i class="fa fa-edit"></i><span>Notifications</span></a>
 </li>
 @endif
+<li class="{{ Request::is('mlClients*') ? 'active' : '' }}">
+    <a href="{!! route('mlClients.index') !!}"><i class="fa fa-edit"></i><span>Gestión Clientes </span></a>
+</li>
+
