@@ -35,7 +35,7 @@ class CobranzaController extends AppBaseController
     {
         $data['title'] = 'Listado de Vouchers';
         $startOfMonth = Carbon::now()->firstOfMonth();
-        $halfOfMonth = Carbon::now()->firstOfMonth()->addDays(14);
+        $halfOfMonth = Carbon::now()->firstOfMonth()->addDays(15);
 
         $from = Carbon::now()->lessThan($halfOfMonth) ? $startOfMonth : $halfOfMonth;
         $to = Carbon::now()->lessThan($halfOfMonth) ? $halfOfMonth : Carbon::now()->lastOfMonth();
@@ -251,8 +251,8 @@ class CobranzaController extends AppBaseController
         $data['title'] = 'Vouchers período anterior';
         $startOfMonth = Carbon::now()->firstOfMonth();
         $halfOfMonth = Carbon::now()->firstOfMonth()->addDays(15);
-        $from = Carbon::now()->lessThan($halfOfMonth) ? Carbon::now()->firstOfMonth()->subDays(15) : Carbon::now()->firstOfMonth()->addDays(15)->subDays(15);
-        $to = Carbon::now()->lessThan($halfOfMonth) ? Carbon::now()->firstOfMonth()->addDays(15)->subDays(15) : Carbon::now()->lastOfMonth()->subDays(15);
+        $from = Carbon::now()->lessThan($halfOfMonth) ? Carbon::now()->firstOfMonth()->subDays(15) : Carbon::now()->firstOfMonth();
+        $to = Carbon::now()->lessThan($halfOfMonth) ? Carbon::now()->firstOfMonth() : Carbon::now()->firstOfMonth()->addDays(15);
 
         if(Auth::user()->role_id == 6) {
             $cobranzas = Cobranza::
