@@ -35,7 +35,7 @@ class CobranzaController extends AppBaseController
     {
         $data['title'] = 'Listado de Vouchers';
         $startOfMonth = Carbon::now()->firstOfMonth();
-        $halfOfMonth = Carbon::now()->firstOfMonth()->addDays(15);
+        $halfOfMonth = Carbon::now()->firstOfMonth()->addDays(14);
 
         $from = Carbon::now()->lessThan($halfOfMonth) ? $startOfMonth : $halfOfMonth;
         $to = Carbon::now()->lessThan($halfOfMonth) ? $halfOfMonth : Carbon::now()->lastOfMonth();
@@ -216,7 +216,7 @@ class CobranzaController extends AppBaseController
             $to = Carbon::createFromFormat('d-m-Y', "1-$month-$year")->addDays(15);
 
             if ($request->query('period') == 2) {
-                $from = Carbon::createFromFormat('d-m-Y', "16-$month-$year");
+                $from = Carbon::createFromFormat('d-m-Y', "15-$month-$year");
                 $to = Carbon::createFromFormat('d-m-Y', "15-$month-$year")->lastOfMonth();
             }
 
