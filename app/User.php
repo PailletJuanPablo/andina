@@ -61,7 +61,7 @@ class User extends Authenticatable
 
     public function getLasts()
     {
-        $cobranzas = Cobranza::where('employee_id', $this->id)->orderBy('operation_date', 'DESC')->limit(10)->get();
+        $cobranzas = Cobranza::where('employee_id', $this->id)->where('status', '!=', 'approved')->orderBy('operation_date', 'DESC')->limit(10)->get();
         return $cobranzas;
     }
 }

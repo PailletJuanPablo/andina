@@ -36,7 +36,7 @@ class CobranzaController extends AppBaseController
         $data['title'] = 'Listado de Vouchers';
         $startOfMonth = Carbon::now()->firstOfMonth();
         $halfOfMonth = Carbon::now()->firstOfMonth()->addDays(15);
-       
+
         $from = Carbon::now()->lessThan($halfOfMonth) ? $startOfMonth : $halfOfMonth;
         $to = Carbon::now()->lessThan($halfOfMonth) ? $halfOfMonth : Carbon::now()->lastOfMonth();
 
@@ -269,7 +269,7 @@ class CobranzaController extends AppBaseController
             ->orderBy('operation_date', 'DESC')
             ->get();
         }
-       
+
         $data['cobranzas'] = $cobranzas;
 
         $data['description'] = 'Pertencientes a la liquidación del período ' . $from->format('d-m-Y') . ' a ' . $to->format('d-m-Y');
@@ -292,12 +292,12 @@ class CobranzaController extends AppBaseController
 
 
             $from = Carbon::createFromFormat('d-m-Y', "1-$month-$year");
-            $to = Carbon::createFromFormat('d-m-Y', "1-$month-$year")->addDays(15);
+            $to = Carbon::createFromFormat('d-m-Y', "1-$month-$year")->addDays(14);
 
-          
+
 
             if ($request->query('period') == 2) {
-                $from = Carbon::createFromFormat('d-m-Y', "16-$month-$year");
+                $from = Carbon::createFromFormat('d-m-Y', "14-$month-$year");
                 $to = Carbon::createFromFormat('d-m-Y', "15-$month-$year")->lastOfMonth();
             }
 
@@ -313,7 +313,7 @@ class CobranzaController extends AppBaseController
                 $data['cobranzas'] = $cobranzas->whereNotNull('ceco_id')->get();
             }
         }
-      
+
         return view('cobranzas.history', $data);
     }
 
