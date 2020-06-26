@@ -41,7 +41,7 @@ class CobranzaController extends AppBaseController
         $to = Carbon::now()->lessThan($halfOfMonth) ? $halfOfMonth : Carbon::now()->lastOfMonth();
 
         $cobranzas = Cobranza::
-            where('company_id', env('COMPANY_ID', 9))
+            where('company_id', env('COMPANY_ID', 10))
             ->whereBetween('operation_date', [$from, $to])
             ->orderBy('operation_date', 'DESC')
             ->get();
@@ -194,7 +194,7 @@ class CobranzaController extends AppBaseController
 
 
         $cobranzas = Cobranza::where('ceco_id', $ceco->id)
-        ->where('company_id', env('COMPANY_ID', 9))
+        ->where('company_id', env('COMPANY_ID', 10))
             ->whereBetween('operation_date', [$from, $to])
             ->orderBy('operation_date', 'DESC')
             ->get();
@@ -231,7 +231,7 @@ class CobranzaController extends AppBaseController
             }
             $data['cobranzas'] = $cobranzas
             ->where('employee_id', Auth::user()->id)
-            ->where('company_id', env('COMPANY_ID', 9))
+            ->where('company_id', env('COMPANY_ID', 10))
             ->get();
         }
 
@@ -256,13 +256,13 @@ class CobranzaController extends AppBaseController
 
         if(Auth::user()->role_id == 6) {
             $cobranzas = Cobranza::
-            where('company_id', env('COMPANY_ID', 9))
+            where('company_id', env('COMPANY_ID', 10))
             ->whereBetween('operation_date', [$from, $to])
             ->orderBy('operation_date', 'DESC')
             ->get();
         } else {
              $cobranzas = Cobranza::
-        where('company_id', env('COMPANY_ID', 9))->
+        where('company_id', env('COMPANY_ID', 10))->
              where('employee_id', Auth::user()->id)
              ->
             whereBetween('operation_date', [$from, $to])
@@ -301,7 +301,7 @@ class CobranzaController extends AppBaseController
                 $to = Carbon::createFromFormat('d-m-Y', "15-$month-$year")->lastOfMonth();
             }
 
-            $cobranzas = Cobranza::whereBetween('operation_date', [$from, $to])->where('company_id', env('COMPANY_ID', 9))
+            $cobranzas = Cobranza::whereBetween('operation_date', [$from, $to])->where('company_id', env('COMPANY_ID', 10))
             ->orderBy('operation_date', 'DESC');
 
             if ($request->has('ceco')) {
