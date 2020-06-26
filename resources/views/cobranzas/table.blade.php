@@ -4,7 +4,6 @@
             <tr>
                 <th>Fecha </th>
                 <th>Monto</th>
-                <th>CECO</th>
 
                 <th>Origen</th>
                 <th>Destino</th>
@@ -21,7 +20,6 @@
             <tr>
                 <td>{!! $cobranza->operation_date->format('d-m-Y') !!}</td>
                 <td>${!! $cobranza->ammount !!}</td>
-                <td>{!! $cobranza->ceco ? $cobranza->ceco->title : 'Sin asignar' !!} </td>
 
                 <td>{!! $cobranza->origin !!}</td>
                 <td>{!! $cobranza->destination !!}</td>

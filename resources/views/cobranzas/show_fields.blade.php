@@ -10,7 +10,7 @@
         <!-- Operation Date Field -->
         <div class="form-group">
             {!! Form::label('operation_date', 'Registrado:') !!}
-            <p>{!! $cobranza->formatted() !!} 
+            <p>{!! $cobranza->formatted() !!}
             </p>
 
         </div>
@@ -68,14 +68,7 @@
 
 <div class="row">
 
-    <div class="col-md-3">
-        <!-- Name Field -->
-        <div class="form-group">
-            {!! Form::label('name', 'Ceco:') !!}
-            <p>{!! $cobranza->ceco ? $cobranza->ceco->title : 'Sin Asignar' !!}</p>
-        </div>
 
-    </div>
 
 
     <div class="col-md-3">
@@ -104,13 +97,13 @@
                     @csrf
                 <div class="form-group">
                     <label for="comments">Agregar Observaciones</label>
-                    <textarea class="form-control" 
-                    
+                    <textarea class="form-control"
+
                     name="comments" id="comments" rows="3"> {{$cobranza->comments}}</textarea>
                 </div>
                 <button type="submit" class="btn btn-primary bg-red text-white"> Guardar </button>
         </form>
-    </div>    
+    </div>
 
 
 </div>

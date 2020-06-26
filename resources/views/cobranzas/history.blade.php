@@ -65,19 +65,7 @@
                             <option value="2" @if(isset($period) && $period == '2') selected @endif> Segundo período de liquidación </option>
                         </select>
                     </div>
-                    <div class="col-md-2">
-                        <label for="ceco"> CECO </label>
 
-                        <select class="form-control" name="ceco" id="ceco"  value="{{old('ceco')}}">
-                            <option value="all"> Todos </option>
-                            @foreach (Auth::user()->getCecos() as $ceco)
-                        <option value="{{$ceco->id}}"
-                        @if(isset($selectedCeco) && $selectedCeco == $ceco->id) selected @endif
-                        > {{$ceco->title}} </option>
-                            @endforeach
-                          
-                        </select>
-                    </div>
                     <div class="col-md-2" style="margin-top: 15px">
                         <button type="submit" class="btn btn-primary bg-red mt-5"> Buscar </button>
                     </div>

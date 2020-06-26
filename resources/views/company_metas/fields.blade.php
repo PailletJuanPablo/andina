@@ -8,14 +8,14 @@
 <div class="form-group col-sm-6">
     {!! Form::label('user_id', 'Secretaria Asignada') !!}
     <select class="select2 form-control" id="user_id" name="user_id" >
-            @foreach ($users as $user)                                     
+            @foreach ($users as $user)
                  <option value="{{$user->id}}">{{$user? $user->first_name : '' }} {{$user ? $user->last_name : ''}}</option>
             @endforeach
       </select>
 </div>
 
 <!-- Company Id Field -->
-    {!! Form::hidden('company_id', 5, ['class' => 'form-control']) !!}
+    {!! Form::hidden('company_id', 9, ['class' => 'form-control']) !!}
 
 
 <!-- Submit Field -->
