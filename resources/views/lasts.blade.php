@@ -17,7 +17,7 @@
               </tr>
               </thead>
               <tbody>
-                  @foreach (Auth::user()->getLasts() as $cobranza)
+                  @foreach ($cobranzas as $cobranza)
                   <tr>
                   <td>{{$cobranza->id}}</td>
                   <td>{{$cobranza->formatted()}}</td>

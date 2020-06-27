@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Models\Cobranza;
+
 class HomeController extends Controller
 {
     /**
@@ -23,7 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $cobranzas = Cobranza::
+        where('company_id', env('COMPANY_ID', 10))
+
+        ->orderBy('operation_date', 'DESC')
+        ->limit(10)->get();
+    $data['cobranzas'] = $cobranzas;
+
+        return view('home', $data);
     }
 /*
     public function test() {
