@@ -61,7 +61,7 @@ class UserRepository extends BaseRepository
             }
         }
 
-        $query->where('company_id', env('COMPANY_ID', 10));
+        $query->where('company_id', env('COMPANY_ID', 11));
 
         if (!is_null($skip)) {
             $query->skip($skip);

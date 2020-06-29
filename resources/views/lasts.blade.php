@@ -26,14 +26,9 @@
 
                   <td>
                         <a href="{!! route('cobranzas.show', [$cobranza->id]) !!}" >Ver detalles</a>
-
                   </td>
-
-
                       </tr>
                   @endforeach
-
-
               </tbody>
             </table>
           </div>
