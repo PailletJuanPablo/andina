@@ -2,6 +2,9 @@
     <table class="table" id="cobranzas-table">
         <thead>
             <tr>
+                <th>Identificador </th>
+                <th>Móvil </th>
+
                 <th>Fecha </th>
                 <th>Monto</th>
 
@@ -12,12 +15,16 @@
 
                 <th >Detalle</th>
                 <th>  Modificar Estado </th>
-
+                <th> Acciones </th>
             </tr>
         </thead>
         <tbody>
             @foreach($cobranzas as $cobranza)
             <tr>
+                <td>{!! $cobranza->id !!}</td>
+                <td>{!! $cobranza->user ? $cobranza->user->last_name : '' !!}</td>
+
+
                 <td>{!! $cobranza->operation_date->format('d-m-Y') !!}</td>
                 <td>${!! $cobranza->ammount !!}</td>
 
@@ -60,6 +67,17 @@
 
                     </form>
                 </td>
+
+                <td>
+                    {!! Form::open(['route' => ['cobranzas.destroy', $cobranza->id], 'method' => 'delete']) !!}
+                    <div class='btn-group'>
+                        <a href="{!! route('cobranzas.edit', [$cobranza->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                        {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Confirma eliminación?')"]) !!}
+                    </div>
+                    {!! Form::close() !!}
+
+                </td>
+
 
 
             </tr>

@@ -1,6 +1,6 @@
 <!-- Operation Date Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('operation_date', 'Operation Date:') !!}
+    {!! Form::label('operation_date', 'Fecha :') !!}
     {!! Form::date('operation_date', null, ['class' => 'form-control','id'=>'operation_date']) !!}
 </div>
 
@@ -15,19 +15,15 @@
 
 <!-- Destination Dni Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('destination_dni', 'Destination Dni:') !!}
+    {!! Form::label('destination_dni', 'Dni:') !!}
     {!! Form::text('destination_dni', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Sign Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('sign', 'Sign:') !!}
-    {!! Form::textarea('sign', null, ['class' => 'form-control']) !!}
-</div>
+
 
 <!-- Ammount Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('ammount', 'Ammount:') !!}
+    {!! Form::label('ammount', 'Monto:') !!}
     {!! Form::number('ammount', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -37,44 +33,29 @@
     {!! Form::number('user_id', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Company Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('company_id', 'Company Id:') !!}
-    {!! Form::number('company_id', null, ['class' => 'form-control']) !!}
-</div>
 
-<!-- Employee Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('employee_id', 'Employee Id:') !!}
-    {!! Form::number('employee_id', null, ['class' => 'form-control']) !!}
-</div>
+
 
 <!-- Name Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('name', 'Name:') !!}
+    {!! Form::label('name', 'Nombre:') !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Origin Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('origin', 'Origin:') !!}
+    {!! Form::label('origin', 'Origen:') !!}
     {!! Form::text('origin', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Destination Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('destination', 'Destination:') !!}
+    {!! Form::label('destination', 'Destino:') !!}
     {!! Form::text('destination', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Ceco Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('ceco_id', 'Ceco Id:') !!}
-    {!! Form::number('ceco_id', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('cobranzas.index') !!}" class="btn btn-default">Cancel</a>
+    {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
+    <a href="{!! route('cobranzas.index') !!}" class="btn btn-default">Cancelar</a>
 </div>

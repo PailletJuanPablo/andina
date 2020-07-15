@@ -10,6 +10,8 @@
               <thead>
               <tr>
                 <th> Identificador</th>
+                <th> Movil </th>
+
                 <th>Fecha y hora</th>
                 <th>Monto </th>
                 <th>Destinatario</th>
@@ -20,6 +22,8 @@
                   @foreach ($cobranzas as $cobranza)
                   <tr>
                   <td>{{$cobranza->id}}</td>
+                  <td>{!! $cobranza->user ? $cobranza->user->last_name : '' !!}</td>
+
                   <td>{{$cobranza->formatted()}}</td>
                   <td> $ {{$cobranza->ammount}}</td>
                   <td>{{$cobranza->name}}</td>

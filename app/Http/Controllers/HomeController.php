@@ -26,9 +26,9 @@ class HomeController extends Controller
     public function index()
     {
         $cobranzas = Cobranza::
-        where('company_id', env('COMPANY_ID', 12))
 
-        ->orderBy('operation_date', 'DESC')
+
+        orderBy('operation_date', 'DESC')
         ->limit(10)->get();
     $data['cobranzas'] = $cobranzas;
 
