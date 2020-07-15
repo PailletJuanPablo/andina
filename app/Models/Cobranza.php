@@ -28,7 +28,7 @@ class Cobranza extends Model
     use SoftDeletes;
 
     public $table = 'cobranzas';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -98,6 +98,8 @@ class Cobranza extends Model
         return $this->operation_date->format('d-m-Y H:i');
     }
 
+    public function company() {
+        return $this->belongsTo('App\Models\Company', 'company_id');
+    }
 
-    
 }
