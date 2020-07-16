@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateCobranzaRequest;
 use App\Repositories\CobranzaRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\Cobranza;
+use App\Models\Company;
 use App\Models\CompanyMeta;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -283,6 +284,8 @@ class CobranzaController extends AppBaseController
         $data['title'] = 'Listado de todos los vouchers';
         $data['description'] = 'Esta sección permite visualizar un histórico de todos los vouchers registrados, sin importar limitación por CECO asginado';
 
+        $data['companies'] = Company::get();
+
         if ($request->has('month') && $request->has('year') && $request->has('period')) {
             $year = $request->query('year');
             $month = $request->query('month');
@@ -304,14 +307,16 @@ class CobranzaController extends AppBaseController
             $cobranzas = Cobranza::whereBetween('operation_date', [$from, $to])
             ->orderBy('operation_date', 'DESC');
 
+            if($request->has('company_id')) {
+                $cobranzas = $cobranzas->where('company_id', $request->query('company_id'));
+
+            }
+
+            $data['cobranzas'] = $cobranzas->get();
             if ($request->has('ceco')) {
                 $data['selectedCeco'] = $request->query('ceco');
             }
-            if ($request->query('ceco') != 'all') {
-                $data['cobranzas'] = $cobranzas->where('ceco_id', $request->query('ceco'))->get();
-            } else {
-                $data['cobranzas'] = $cobranzas->whereNotNull('ceco_id')->get();
-            }
+
         }
 
         return view('cobranzas.history', $data);

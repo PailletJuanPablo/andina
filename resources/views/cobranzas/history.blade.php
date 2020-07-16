@@ -66,6 +66,19 @@
                         </select>
                     </div>
 
+                    <div class="col-md-2">
+                        <label for="period"> Empresa </label>
+
+                        <select class="form-control" name="company_id" id="company_id" >
+
+                            @foreach ($companies as $company)
+                            <option value="{{ $company->id }}" > {{ $company->title }}</option>
+
+                            @endforeach
+
+                        </select>
+                    </div>
+
                     <div class="col-md-2" style="margin-top: 15px">
                         <button type="submit" class="btn btn-primary bg-red mt-5"> Buscar </button>
                     </div>
