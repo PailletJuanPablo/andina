@@ -57,7 +57,7 @@
                             <option value="2018" @if(isset($year) && $year == '2018') selected @endif> 2018 </option>
                         </select>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <label for="period"> Período </label>
 
                         <select class="form-control" name="period" id="period" >
