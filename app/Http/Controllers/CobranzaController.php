@@ -142,7 +142,7 @@ class CobranzaController extends AppBaseController
 
         $cobranza = $this->cobranzaRepository->update($request->all(), $id);
 
-        Flash::success('Cobranza updated successfully.');
+        Flash::success('Cobranza actualizada.');
 
         return redirect(route('cobranzas.index'));
     }

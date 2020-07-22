@@ -1,17 +1,5 @@
-<!-- Operation Date Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('operation_date', 'Fecha :') !!}
-    {!! Form::date('operation_date', null, ['class' => 'form-control','id'=>'operation_date']) !!}
-</div>
 
-@section('scripts')
-    <script type="text/javascript">
-        $('#operation_date').datetimepicker({
-            format: 'YYYY-MM-DD HH:mm:ss',
-            useCurrent: false
-        })
-    </script>
-@endsection
+
 
 <!-- Destination Dni Field -->
 <div class="form-group col-sm-6">

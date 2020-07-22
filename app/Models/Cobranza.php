@@ -76,9 +76,7 @@ class Cobranza extends Model
      * @var array
      */
     public static $rules = [
-        'operation_date' => 'required',
         'destination_dni' => 'required',
-        'sign' => 'required',
         'ammount' => 'required'
     ];
 
