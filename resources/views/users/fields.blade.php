@@ -36,7 +36,7 @@
       </select>
 </div>
 
-<input type="hidden" name="company_id" value="14">
+<input type="hidden" name="company_id" value="{{ config('app.company_id') }}">
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
