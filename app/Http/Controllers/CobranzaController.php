@@ -291,13 +291,13 @@ class CobranzaController extends AppBaseController
             $data['month'] = $request->query('month');
 
 
-            $from = Carbon::createFromFormat('d-m-Y', "1-$month-$year");
+            $from = Carbon::createFromFormat('d-m-Y', "1-$month-$year")->startOfMonth();
             $to = Carbon::createFromFormat('d-m-Y', "1-$month-$year")->addDays(14);
 
 
 
             if ($request->query('period') == 2) {
-                $from = Carbon::createFromFormat('d-m-Y', "14-$month-$year");
+                $from = Carbon::createFromFormat('d-m-Y', "15-$month-$year");
                 $to = Carbon::createFromFormat('d-m-Y', "15-$month-$year")->lastOfMonth();
             }
 
@@ -306,11 +306,13 @@ class CobranzaController extends AppBaseController
 
             if ($request->has('ceco')) {
                 $data['selectedCeco'] = $request->query('ceco');
-            }
-            if ($request->query('ceco') != 'all') {
-                $data['cobranzas'] = $cobranzas->where('ceco_id', $request->query('ceco'))->get();
-            } else {
-                $data['cobranzas'] = $cobranzas->whereNotNull('ceco_id')->get();
+                if ($request->query('ceco') != 'all') {
+                    $data['cobranzas'] = $cobranzas->where('ceco_id', $request->query('ceco'))->get();
+                } else {
+                    $data['cobranzas'] = $cobranzas->whereNotNull('ceco_id')->get();
+                }
+            }else {
+                $data['cobranzas'] = $cobranzas->get();
             }
         }
 
