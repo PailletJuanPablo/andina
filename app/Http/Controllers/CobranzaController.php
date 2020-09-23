@@ -306,12 +306,15 @@ class CobranzaController extends AppBaseController
 
             if ($request->has('ceco')) {
                 $data['selectedCeco'] = $request->query('ceco');
+
+                if ($request->query('ceco') != 'all') {
+                    $data['cobranzas'] = $cobranzas->where('ceco_id', $request->query('ceco'))->get();
+                } else {
+                    $data['cobranzas'] = $cobranzas->whereNotNull('ceco_id')->get();
+                }
+                
             }
-            if ($request->query('ceco') != 'all') {
-                $data['cobranzas'] = $cobranzas->where('ceco_id', $request->query('ceco'))->get();
-            } else {
-                $data['cobranzas'] = $cobranzas->whereNotNull('ceco_id')->get();
-            }
+         
         }
 
         return view('cobranzas.history', $data);
