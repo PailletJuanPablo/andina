@@ -212,8 +212,8 @@ class CobranzaController extends AppBaseController
             $year = $request->query('year');
             $month = $request->query('month');
 
-            $from = Carbon::createFromFormat('d-m-Y', "1-$month-$year");
-            $to = Carbon::createFromFormat('d-m-Y', "1-$month-$year")->addDays(15);
+            $from = Carbon::createFromFormat('d-m-Y', "1-$month-$year")->startOfMonth();
+            $to = Carbon::createFromFormat('d-m-Y', "1-$month-$year")->addDays(14);
 
             if ($request->query('period') == 2) {
                 $from = Carbon::createFromFormat('d-m-Y', "15-$month-$year");
