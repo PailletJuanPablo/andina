@@ -15,7 +15,7 @@
 </div>
 
 <!-- Company Id Field -->
-    {!! Form::hidden('company_id', 11, ['class' => 'form-control']) !!}
+    {!! Form::hidden('company_id', config('app.company_id'), ['class' => 'form-control']) !!}
 
 
 <!-- Submit Field -->

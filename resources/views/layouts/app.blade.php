@@ -34,6 +34,13 @@
 
     <link rel="stylesheet" href="{{asset('css/skins/all-md-skins.min.css')}}">
     @yield('css')
+
+    <style>
+
+.user-panel>.image>img {
+    max-width: 179px;
+}
+    </style>
 </head>
 
 <body class="skin-blue-light sidebar-mini">
