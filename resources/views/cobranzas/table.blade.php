@@ -2,6 +2,8 @@
     <table class="table" id="cobranzas-table">
         <thead>
             <tr>
+            <th>ID </th>
+
                 <th>Fecha </th>
                 <th>Monto</th>
 
@@ -18,6 +20,8 @@
         <tbody>
             @foreach($cobranzas as $cobranza)
             <tr>
+            <td>${!! $cobranza->id !!}</td>
+
                 <td>{!! $cobranza->operation_date->format('d-m-Y') !!}</td>
                 <td>${!! $cobranza->ammount !!}</td>
 
