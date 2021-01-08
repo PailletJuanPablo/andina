@@ -43,6 +43,9 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::resource('users', 'UserController');
 
     Route::resource('companies', 'CompanyController');
+    Route::get('moviles', 'UserController@moviles')->name('moviles');
+    Route::get('moviles/create', 'UserController@createMovil')->name('moviles.create');
+    Route::post('moviles/create', 'UserController@storeMovil')->name('moviles.store');
 
     Route::resource('companyMetas', 'CompanyMetaController');
 

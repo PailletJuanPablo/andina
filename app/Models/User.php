@@ -78,18 +78,18 @@ class User extends Model
      * @var array
      */
     public static $rules = [
-        'password' => 'required',
+     /*   'password' => 'required',
         'email'=> 'required',
         'first_name' => 'required',
         'last_name' => 'required',
-        'role_id' => 'required'
+        'role_id' => 'required'*/
     ];
 
     public static $editingRules = [
-        'email'=> 'required',
+        /*'email'=> 'required',
         'first_name' => 'required',
         'last_name' => 'required',
-        'role_id' => 'required'
+        'role_id' => 'required'*/
     ];
 
 

@@ -17,6 +17,12 @@
 @endif
 
 @if(Auth::user()->role_id == 6)
+<li class="{{ Request::is('moviles*') ? 'active' : '' }}">
+    <a href="{!! route('moviles') !!}"><i class="fa fa-edit"></i><span>Gestión Móviles</span></a>
+</li>
+@endif
+
+@if(Auth::user()->role_id == 6)
 <li class="{{ Request::is('all_vouchers*') ? 'active' : '' }}">
     <a href="{!! route('all') !!}"><i class="fa fa-edit"></i><span> Listado Completo </span></a>
 </li>

@@ -31,7 +31,7 @@ class UserController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $users = $this->userRepository->paginate(10);
+        $users = $this->userRepository->all(['role_id' => '2']);
         return view('users.index')->with('users', $users);
     }
 
@@ -175,5 +175,30 @@ class UserController extends AppBaseController
         return redirect(route('users.index'));
     }
 
+
+    public function moviles(Request $request)
+    {
+        $users = $this->userRepository->all(['role_id' => 3]);
+        return view('users.index')->with('users', $users)->with('moviles', true);
+    }
+
+    public function createMovil(Request $request) {
+        return view('users.create')->with('movil', true);
+
+    }
+
+    public function storeMovil(Request $request) {
+        $movil = new User();
+        $movil->first_name = 'Movil';
+        $movil->last_name = $request->last_name;
+        $movil->password = $request->chapa;
+        $movil->role_id = 3;
+        $movil->identificator = $request->last_name;
+        $movil->chapa = $request->chapa;
+        $movil->save();
+        return redirect(route('moviles'));
+
+
+    }
    
 }

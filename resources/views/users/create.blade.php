@@ -3,7 +3,12 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Crear Usuario
+            Crear 
+            @if (isset($movil))
+                Móvil
+            @else
+                Usuario
+            @endif
         </h1>
     </section>
     <div class="content">
@@ -12,11 +17,21 @@
 
             <div class="box-body">
                 <div class="row">
-                    {!! Form::open(['route' => 'users.store']) !!}
+                    @if (isset($movil))
 
-                        @include('users.fields', ['editing' => false])
-
+                    {!! Form::open(['route' => 'moviles.store']) !!}
+                    @include('users.fields_movil', ['editing' => false])
                     {!! Form::close() !!}
+                @else
+                {!! Form::open(['route' => 'users.store']) !!}
+                @include('users.fields', ['editing' => false])
+                {!! Form::close() !!}
+
+
+                @endif
+
+
+                   
                 </div>
             </div>
         </div>
