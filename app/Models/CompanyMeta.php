@@ -32,7 +32,8 @@ class CompanyMeta extends Model
         'title',
         'description',
         'user_id',
-        'company_id'
+        'company_id',
+        'user_id_2'
     ];
 
     /**
@@ -45,7 +46,8 @@ class CompanyMeta extends Model
         'title' => 'string',
         'description' => 'string',
         'user_id' => 'integer',
-        'company_id' => 'integer'
+        'company_id' => 'integer',
+        'user_id_2' => 'integer'
     ];
 
     /**
@@ -60,6 +62,11 @@ class CompanyMeta extends Model
     public function user() {
         return $this->belongsTo('App\User', 'user_id');
     }
+
+    public function user2() {
+        return $this->belongsTo('App\User', 'user_id_2');
+    }
+
 
     public function cobranzas() {
         return $this->hasMany('App\Models\Cobranza', 'ceco_id');
