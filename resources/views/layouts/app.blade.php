@@ -70,7 +70,7 @@
                                 <!-- The user image in the navbar-->
 
                                 @if (Auth::user()->company)
-                                <img src="{{asset('images/net.jpeg')}}" class="user-image" alt="RAI Empresas" />
+                                <img src="{{asset('images/neverland.jpeg')}}" class="user-image" alt="RAI Empresas" />
                                 @else
                                 <img src="{{asset('images/logo_rai.png')}}" style="background: white" class="user-image"
                                     alt="RAI Empresas" />
