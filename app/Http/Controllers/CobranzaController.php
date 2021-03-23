@@ -230,7 +230,7 @@ class CobranzaController extends AppBaseController
                 }
             }
             $data['cobranzas'] = $cobranzas
-            ->where('employee_id', Auth::user()->id)
+           // ->where('employee_id', Auth::user()->id)
             ->where('company_id', 5)
             ->get();
         }
