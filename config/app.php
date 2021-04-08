@@ -14,7 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Infyom'),
-    'company_id' => 21,
+    'company_id' => 22,
 
 
     /*
