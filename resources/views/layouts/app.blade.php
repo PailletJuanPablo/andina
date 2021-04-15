@@ -70,7 +70,7 @@
                                 <!-- The user image in the navbar-->
 
                                 @if (Auth::user()->company)
-                                <img src="{{asset('images/claro.png')}}" class="user-image" alt="RAI Empresas" />
+                                <img src="{{asset('images/logo_family.jpeg')}}" class="user-image" alt="RAI Empresas" />
                                 @else
                                 <img src="{{asset('images/logo_rai.png')}}" style="background: white" class="user-image"
                                     alt="RAI Empresas" />
@@ -85,7 +85,7 @@
                                 <li class="user-header">
 
                                     @if (Auth::user()->company)
-                                    <img src="{{asset('images/claro.png')}}" class="img-circle" alt="RAI Empresas" />
+                                    <img src="{{asset('images/logo_family.jpeg')}}" class="img-circle" alt="RAI Empresas" />
                                     @else
                                     <img src="{{asset('images/logo_rai.png')}}" style="background: white"
                                         class="img-circle" alt="RAI Empresas" />
