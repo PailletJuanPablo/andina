@@ -37,8 +37,8 @@ class CobranzaController extends AppBaseController
         $startOfMonth = Carbon::now()->firstOfMonth();
         $halfOfMonth = Carbon::now()->firstOfMonth()->addDays(15);
 
-        $from = Carbon::now()->lessThan($halfOfMonth) ? $startOfMonth : $halfOfMonth;
-        $to = Carbon::now()->lessThan($halfOfMonth) ? $halfOfMonth : Carbon::now()->lastOfMonth();
+        $from = Carbon::now()->startOfMonth();
+        $to = Carbon::now()->endOfMonth();
 
         $cobranzas = Cobranza::
             where('company_id', config('app.company_id'))
@@ -219,7 +219,7 @@ class CobranzaController extends AppBaseController
                 
                 $from = Carbon::createFromFormat('d-m-Y', "1-$month-$year");
                 $from->addMonths(1);
-                $to = Carbon::createFromFormat('d-m-Y', "15-$month-$year")->endOfMonth();
+                $to = Carbon::createFromFormat('d-m-Y', "1-$month-$year")->endOfMonth();
                 $to->addMonths(1);
             }
 
@@ -257,7 +257,7 @@ class CobranzaController extends AppBaseController
         $startOfMonth = Carbon::now()->startOfMonth();
         $halfOfMonth = Carbon::now()->startOfMonth()->addDays(15);
         $from = $now->startOfMonth();
-        $to = $now->endOfMonth();
+        $to = Carbon::now()->subMonth()->endOfMonth();
 
         if(Auth::user()->role_id == 6) {
             $cobranzas = Cobranza::
