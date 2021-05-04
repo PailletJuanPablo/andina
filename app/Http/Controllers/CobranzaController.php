@@ -37,8 +37,8 @@ class CobranzaController extends AppBaseController
         $startOfMonth = Carbon::now()->firstOfMonth();
         $halfOfMonth = Carbon::now()->firstOfMonth()->addDays(15);
 
-        $from = Carbon::now()->lessThan($halfOfMonth) ? $startOfMonth : $halfOfMonth;
-        $to = Carbon::now()->lessThan($halfOfMonth) ? $halfOfMonth : Carbon::now()->lastOfMonth();
+        $from = Carbon::now()->startOfMonth();
+        $to = Carbon::now()->endOfMonth();
 
         $cobranzas = Cobranza::
             where('company_id', config('app.company_id'))
@@ -213,11 +213,14 @@ class CobranzaController extends AppBaseController
             $month = $request->query('month');
 
             $from = Carbon::createFromFormat('d-m-Y', "1-$month-$year")->startOfMonth();
-            $to = Carbon::createFromFormat('d-m-Y', "1-$month-$year")->addDays(14);
+            $to = Carbon::createFromFormat('d-m-Y', "1-$month-$year")->endOfMonth();
 
             if ($request->query('period') == 2) {
-                $from = Carbon::createFromFormat('d-m-Y', "15-$month-$year");
-                $to = Carbon::createFromFormat('d-m-Y', "15-$month-$year")->lastOfMonth();
+                
+                $from = Carbon::createFromFormat('d-m-Y', "1-$month-$year");
+                $from->addMonths(1);
+                $to = Carbon::createFromFormat('d-m-Y', "1-$month-$year")->endOfMonth();
+                $to->addMonths(1);
             }
 
             $cobranzas = Cobranza::whereBetween('operation_date', [$from, $to])
@@ -249,10 +252,12 @@ class CobranzaController extends AppBaseController
     public function old(Request $request)
     {
         $data['title'] = 'Vouchers período anterior';
-        $startOfMonth = Carbon::now()->firstOfMonth();
-        $halfOfMonth = Carbon::now()->firstOfMonth()->addDays(15);
-        $from = Carbon::now()->lessThan($halfOfMonth) ? Carbon::now()->firstOfMonth()->subDays(15) : Carbon::now()->firstOfMonth();
-        $to = Carbon::now()->lessThan($halfOfMonth) ? Carbon::now()->firstOfMonth() : Carbon::now()->firstOfMonth()->addDays(15);
+        $now = Carbon::now()->subMonth();
+        
+        $startOfMonth = Carbon::now()->startOfMonth();
+        $halfOfMonth = Carbon::now()->startOfMonth()->addDays(15);
+        $from = $now->startOfMonth();
+        $to = Carbon::now()->subMonth()->endOfMonth();
 
         if(Auth::user()->role_id == 6) {
             $cobranzas = Cobranza::
@@ -292,13 +297,14 @@ class CobranzaController extends AppBaseController
 
 
             $from = Carbon::createFromFormat('d-m-Y', "1-$month-$year")->startOfMonth();
-            $to = Carbon::createFromFormat('d-m-Y', "1-$month-$year")->addDays(14);
-
-
+            $to = Carbon::createFromFormat('d-m-Y', "1-$month-$year")->endOfMonth();
 
             if ($request->query('period') == 2) {
-                $from = Carbon::createFromFormat('d-m-Y', "15-$month-$year");
-                $to = Carbon::createFromFormat('d-m-Y', "15-$month-$year")->lastOfMonth();
+                
+                $from = Carbon::createFromFormat('d-m-Y', "1-$month-$year");
+                $from->addMonths(1);
+                $to = Carbon::createFromFormat('d-m-Y', "15-$month-$year")->endOfMonth();
+                $to->addMonths(1);
             }
 
             $cobranzas = Cobranza::whereBetween('operation_date', [$from, $to])->where('company_id', config('app.company_id'))
