@@ -13,6 +13,7 @@
 
 
 Auth::routes();
+Route::post('save_image', 'CobranzaController@saveImage')->name('saveImage');
 
 
 Route::group(['middleware' => ['auth']], function () {
@@ -35,6 +36,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('comments/{id}', 'CobranzaController@comments')->name('cobranzaComments');
 
     Route::get('/periodo_anterior', 'CobranzaController@old')->name('periodo_anterior');
+    Route::get('/create_custom', 'CobranzaController@custom')->name('custom');
+    Route::post('/create_custom', 'CobranzaController@storeCustom')->name('storeCustom');
+
 });
 Route::group(['middleware' => ['auth', 'admin']], function () {
      Route::get('/all_vouchers', 'CobranzaController@all')->name('all');

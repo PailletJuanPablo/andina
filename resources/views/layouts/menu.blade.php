@@ -61,3 +61,8 @@
     <a href="{!! route('notifications.index') !!}"><i class="fa fa-edit"></i><span>Notifications</span></a>
 </li>
 @endif
+
+
+<li class="{{ Request::is('custom*') ? 'active' : '' }}">
+    <a href="{!! route('custom') !!}"><i class="fa fa-edit"></i><span>Nuevo voucher</span></a>
+</li>

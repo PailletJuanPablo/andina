@@ -8,6 +8,8 @@ use App\Repositories\CobranzaRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\Cobranza;
 use App\Models\Company;
+use App\Models\User;
+
 use App\Models\CompanyMeta;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -341,4 +343,39 @@ class CobranzaController extends AppBaseController
         $cobranza->save();
         return redirect()->back();
     }
+
+    public function custom() {
+        $data = [];
+        $data['companies'] = Company::get();
+
+        return view('cobranzas.create_custom', $data);
+    }
+
+    public function saveImage(Request $request) {
+        if ($request->hasFile('upload')) {
+            $imgRoute = $request->file('upload')->store('public');
+            $url =  '/storage/' . basename($imgRoute);
+            return response()->json(["url" => $url]);
+
+        }
+        return response()->json(["url" => false]);
+
+
+    }
+
+    public function storeCustom(Request $request) {
+        $data = $request->all();
+        $data['operation_date'] = Carbon::parse( $data['operation_date']);
+         $movil = User::where('identificator', $request->get('nro_movil'))->first();
+        if(!$movil) {
+            return 'No se encontró móvil con ese número';
+        }
+       $cobranza = new Cobranza($data);
+       $cobranza->save();
+       return redirect()->route('home');
+    }
+
+
+
+
 }
