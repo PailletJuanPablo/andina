@@ -65,11 +65,8 @@
 
 
 
-    <div class="col-md-12">
-        <div class="form-group">
-            {!! Form::label('sign', 'Firma:') !!}
-            <img class="img-fluid" src="{{$cobranza->sign}}">
-        </div>
+    <div class="col-md-12" style="max-width: 100%">
+            <img class="img-fluid" style="max-width: 95%" src="{{$cobranza->sign}}">
     </div>
 
    
