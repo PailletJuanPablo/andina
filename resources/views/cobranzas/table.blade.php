@@ -21,7 +21,7 @@
         <tbody>
             @foreach($cobranzas as $cobranza)
             <tr>
-                <td>${!! $cobranza->id !!}</td>
+                <td>{!! $cobranza->id !!}</td>
                 <td>{!! $cobranza->user ? $cobranza->user->last_name : '' !!}</td>
 
                 <td>{!! $cobranza->operation_date->format('d-m-Y') !!}</td>

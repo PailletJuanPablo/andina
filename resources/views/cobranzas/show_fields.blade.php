@@ -55,12 +55,7 @@
         </div>
     </div>
 
-    <div class="col-md-4">
-        <div class="form-group">
-            {!! Form::label('sign', 'Firma:') !!}
-            <img class="img-fluid" src="{{$cobranza->sign}}">
-        </div>
-    </div>
+    
 
 </div>
 
@@ -70,13 +65,14 @@
 
 
 
-
-    <div class="col-md-3">
+    <div class="col-md-12">
         <div class="form-group">
-            {!! Form::label('destination_dni', 'Secretaria asignada:') !!}
-            <p>{!! $cobranza->responsable->first_name !!} {!! $cobranza->responsable->last_name !!}</p>
+            {!! Form::label('sign', 'Firma:') !!}
+            <img class="img-fluid" src="{{$cobranza->sign}}">
         </div>
     </div>
+
+   
 
     <div class="col-md-3">
         <div class="form-group">
