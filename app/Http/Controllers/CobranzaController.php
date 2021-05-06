@@ -370,7 +370,18 @@ class CobranzaController extends AppBaseController
         if(!$movil) {
             return 'No se encontró móvil con ese número';
         }
-       $cobranza = new Cobranza($data);
+        $cobranza = new Cobranza($data);
+        if(!$cobranza->sign) {
+            $cobranza->sign = '';
+        }
+
+        $cobranza->user_id =$movil->id;
+        $ceco = CompanyMeta::where('company_id', $request->get('company_id'))->first();
+        if($ceco) {
+            $cobranza->employee_id = $ceco->user_id;
+            $cobranza->ceco_id = $ceco->id;
+        }
+
        $cobranza->save();
        return redirect()->route('home');
     }
