@@ -17,6 +17,7 @@
                 <th>  Espera </th>
                 <th>  Adicional </th>
                 <th>  Total </th>
+                <th>   Estado </th>
 
                 <th>  Modificar Estado </th>
 
