@@ -31,15 +31,15 @@
                 <td>{!! $cobranza->name !!}</td>
                 <td>{!! $cobranza->destination_dni !!}</td>
 
-                <td>${!! $cobranza->ceco_name !!}</td>
+                <td>{!! $cobranza->ceco_name !!}</td>
 
                 <td>{!! $cobranza->origin !!}</td>
                 <td>{!! $cobranza->destination !!}</td>
-                <td>{!! $cobranza->ammount !!}</td>
-                <td>{!! $cobranza->peaje !!}</td>
-                <td>{!! $cobranza->espera !!}</td>
-                <td>{!! $cobranza->adicional !!}</td>
-                <td>{!! $cobranza->total !!}</td>
+                <td>$ {!! $cobranza->ammount !!}</td>
+                <td>$ {!! $cobranza->peaje !!}</td>
+                <td>$ {!! $cobranza->espera !!}</td>
+                <td>$ {!! $cobranza->adicional !!}</td>
+                <td>$ {!! $cobranza->total !!}</td>
 
                 <td>
                 @if($cobranza->status == 'approved')
@@ -52,11 +52,7 @@
                     Pendiente
                 @endif
                 </td>
-                <td>
-                  <a href="{!! route('cobranzas.show', [$cobranza->id]) !!}" class='btn btn-default btn-xs'><i
-                                class="glyphicon glyphicon-eye-open"></i></a>
-
-                </td>
+             
 
                 <td style="display: flex">
                  <form method="post" action="{{route('switchCobranzaStatus', $cobranza->id)}}" style="display: flex">
