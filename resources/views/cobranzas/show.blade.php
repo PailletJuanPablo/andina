@@ -8,8 +8,8 @@
     </section>
     <div class="content">
         <div class="box box-primary">
-            <div class="box-body">
-                <div class="row" style="padding-left: 20px">
+            <div class="box-body ">
+                <div class="container" style="padding-left: 20px">
                     @include('cobranzas.show_fields')
                     <a href="{!! route('cobranzas.index') !!}" class="btn bg-red">Volver</a>
                 </div>

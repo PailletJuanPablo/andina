@@ -32,9 +32,7 @@ class Cobranza extends Model
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
-
     protected $dates = ['deleted_at'];
-
 
     public $fillable = [
         'operation_date',
@@ -47,7 +45,13 @@ class Cobranza extends Model
         'name',
         'origin',
         'destination',
-        'ceco_id'
+        'ceco_id',
+        'email',
+        'ceco_name',
+        'peaje',
+        'espera',
+        'adicional',
+        'total',
     ];
 
     /**
@@ -67,7 +71,13 @@ class Cobranza extends Model
         'name' => 'string',
         'origin' => 'string',
         'destination' => 'string',
-        'ceco_id' => 'integer'
+        'ceco_id' => 'integer',
+        'email' => 'string',
+        'ceco_name' => 'string',
+        'peaje' => 'string',
+        'espera' => 'string',
+        'adicional' => 'string',
+        'total' => 'string',
     ];
 
     /**
@@ -77,26 +87,31 @@ class Cobranza extends Model
      */
     public static $rules = [
         'destination_dni' => 'required',
-        'ammount' => 'required'
+        'ammount' => 'required',
     ];
 
-    public function responsable() {
+    public function responsable()
+    {
         return $this->belongsTo('App\User', 'employee_id');
     }
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo('App\User', 'user_id');
     }
 
-    public function ceco() {
+    public function ceco()
+    {
         return $this->belongsTo('App\Models\CompanyMeta', 'ceco_id');
     }
 
-    public function formatted()  {
+    public function formatted()
+    {
         return $this->operation_date->format('d-m-Y H:i');
     }
 
-    public function company() {
+    public function company()
+    {
         return $this->belongsTo('App\Models\Company', 'company_id');
     }
 

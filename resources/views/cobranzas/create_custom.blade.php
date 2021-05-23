@@ -28,13 +28,13 @@
                         </select>
 
                     </div>
-                    <div class="form-group col-sm-6">
+                    <div class="form-group col-sm-3">
                         {!! Form::label('nro_movil', 'Número de móvil:') !!}
                         {!! Form::text('nro_movil', null, ['class' => 'form-control', 'required' => true]) !!}
                     </div>
 
-                    <div class="form-group col-sm-6">
-                        {!! Form::label('operation_date', 'Fecha de operación:') !!}
+                    <div class="form-group col-sm-3">
+                        {!! Form::label('operation_date', 'Fecha y hora operación:') !!}
                         <input required type="datetime-local" class="form-control" id="operation_date"
                             name="operation_date">
                     </div>
@@ -53,32 +53,63 @@
 
 
                     <!-- Name Field -->
-                    <div class="form-group col-sm-6">
-                        {!! Form::label('name', 'Beneficiario:') !!}
+                    <div class="form-group col-sm-3">
+                        {!! Form::label('name', 'Nombre pasajero:') !!}
                         {!! Form::text('name', null, ['class' => 'form-control', 'required' => true]) !!}
                     </div>
 
                     <!-- Destination Dni Field -->
-                    <div class="form-group col-sm-6">
-                        {!! Form::label('destination_dni', 'Dni:') !!}
+                    <div class="form-group col-sm-3">
+                        {!! Form::label('destination_dni', 'Legajo:') !!}
                         {!! Form::text('destination_dni', null, ['class' => 'form-control']) !!}
                     </div>
+                    <!-- Destination Dni Field -->
+                    <div class="form-group col-sm-3">
+                        {!! Form::label('email', 'Email:') !!}
+                        {!! Form::text('email', null, ['class' => 'form-control']) !!}
+                    </div>
 
+                    <!-- Destination Dni Field -->
+                    <div class="form-group col-sm-3">
+                        {!! Form::label('ceco_name', 'Ceco:') !!}
+                        {!! Form::text('ceco_name', null, ['class' => 'form-control']) !!}
+                    </div>
 
 
                     <!-- Ammount Field -->
-                    <div class="form-group col-sm-6">
-                        {!! Form::label('ammount', 'Monto:') !!}
+                    <div class="form-group col-sm-2">
+                        {!! Form::label('ammount', 'Importe:') !!}
                         {!! Form::number('ammount', null, ['class' => 'form-control']) !!}
                     </div>
 
+                    <!-- Ammount Field -->
+                    <div class="form-group col-sm-2">
+                        {!! Form::label('peaje', 'Peaje:') !!}
+                        {!! Form::number('peaje', null, ['class' => 'form-control']) !!}
+                    </div>
+                    <!-- Ammount Field -->
+                    <div class="form-group col-sm-2">
+                        {!! Form::label('espera', 'Espera:') !!}
+                        {!! Form::number('espera', null, ['class' => 'form-control']) !!}
+                    </div>
+                    <!-- Ammount Field -->
+                    <div class="form-group col-sm-2">
+                        {!! Form::label('adicional', 'Adicional:') !!}
+                        {!! Form::number('adicional', null, ['class' => 'form-control']) !!}
+                    </div>
+                    <div class="form-group col-sm-4">
+                        {!! Form::label('total', 'Total:') !!}
+                        {!! Form::number('total', null, ['class' => 'form-control']) !!}
+                    </div>
+
+
                     <!-- User Id Field
-    <div class="form-group col-sm-6">
-        {--!!! Form::label('user_id', 'User Id:') !!}
-        {--!! Form::number('user_id', null, ['class' => 'form-control']) !! }
-    </div>
-    -->
-<input type="hidden" name="sign" id="sign">
+        <div class="form-group col-sm-6">
+            {--!!! Form::label('user_id', 'User Id:') !!}
+            {--!! Form::number('user_id', null, ['class' => 'form-control']) !! }
+        </div>
+        -->
+                    <input type="hidden" name="sign" id="sign">
                     <div class="form-group col-sm-12">
 
                         <p> Si es necesario adjuntar imagen, pegarla directamente en el recuadro de abajo, o subirla
@@ -143,15 +174,15 @@
             .then(editor => {
                 window.editor = editor;
 
-                editor.model.document.on( 'change:data', () => {
- 
+                editor.model.document.on('change:data', () => {
+
                     var parser = new DOMParser();
-var doc = parser.parseFromString(editor.getData(), "text/html");
-var image = doc.querySelector('img');
-if(image && image.src && image.src.length > 3) {
-    document.querySelector('#sign').value = image.src
-}
-} );
+                    var doc = parser.parseFromString(editor.getData(), "text/html");
+                    var image = doc.querySelector('img');
+                    if (image && image.src && image.src.length > 3) {
+                        document.querySelector('#sign').value = image.src
+                    }
+                });
 
 
 
@@ -166,7 +197,7 @@ if(image && image.src && image.src.length > 3) {
                 console.error('Oops, something went wrong!');
                 console.error(
                     'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:'
-                    );
+                );
                 console.warn('Build id: ajnrpni8c8y5-nohdljl880ze');
                 console.error(error);
             });
