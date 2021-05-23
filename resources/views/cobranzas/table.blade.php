@@ -2,18 +2,22 @@
     <table class="table" id="cobranzas-table">
         <thead>
             <tr>
-                <th>ID </th>
-                <th>Móvil </th>
+                <th>Fecha y hora </th>
 
-                <th>Fecha </th>
-                <th>Monto</th>
+                <th>ID </th>
+                <th>Nombre </th>
+
+                <th>Legajo</th>
+                <th>Ceco</th>
 
                 <th>Origen</th>
                 <th>Destino</th>
-                <th>Beneficiario</th>
-                <th>  Estado </th>
+                <th>Importe</th>
+                <th>  Peaje </th>
+                <th>  Espera </th>
+                <th>  Adicional </th>
+                <th>  Total </th>
 
-                <th >Detalle</th>
                 <th>  Modificar Estado </th>
 
             </tr>
@@ -21,15 +25,21 @@
         <tbody>
             @foreach($cobranzas as $cobranza)
             <tr>
-                <td>{!! $cobranza->id !!}</td>
-                <td>{!! $cobranza->user ? $cobranza->user->last_name : '' !!}</td>
-
                 <td>{!! $cobranza->operation_date->format('d-m-Y') !!}</td>
-                <td>${!! $cobranza->ammount !!}</td>
+
+                <td>{!! $cobranza->id !!}</td>
+                <td>{!! $cobranza->name !!}</td>
+                <td>{!! $cobranza->destination_dni !!}</td>
+
+                <td>${!! $cobranza->ceco_name !!}</td>
 
                 <td>{!! $cobranza->origin !!}</td>
                 <td>{!! $cobranza->destination !!}</td>
-                <td>{!! $cobranza->name !!}</td>
+                <td>{!! $cobranza->ammount !!}</td>
+                <td>{!! $cobranza->peaje !!}</td>
+                <td>{!! $cobranza->espera !!}</td>
+                <td>{!! $cobranza->adicional !!}</td>
+                <td>{!! $cobranza->total !!}</td>
 
                 <td>
                 @if($cobranza->status == 'approved')
