@@ -36,11 +36,11 @@
 
                 <td>{!! $cobranza->origin !!}</td>
                 <td>{!! $cobranza->destination !!}</td>
-                <td>$ {!! $cobranza->ammount !!}</td>
-                <td>$ {!! $cobranza->peaje !!}</td>
-                <td>$ {!! $cobranza->espera !!}</td>
-                <td>$ {!! $cobranza->adicional !!}</td>
-                <td>$ {!! $cobranza->total !!}</td>
+                <td>$ {!! $cobranza->ammount ? $cobranza->ammount : 0!!}</td>
+                <td>$ {!! $cobranza->peaje ? $cobranza->peaje : 0 !!}</td>
+                <td>$ {!! $cobranza->espera ? $cobranza->espera : 0 !!}</td>
+                <td>$ {!! $cobranza->adicional ? $cobranza->adicional : 0 !!}</td>
+                <td>$ {!! $cobranza->total ? $cobranza->total : 0 !!}</td>
 
                 <td>
                 @if($cobranza->status == 'approved')
