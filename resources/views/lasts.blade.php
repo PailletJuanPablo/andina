@@ -13,6 +13,8 @@
                 <th>Fecha y hora</th>
                 <th>Monto </th>
                 <th>Destinatario</th>
+                <th>Referente</th>
+
                 <th> </th>
               </tr>
               </thead>
@@ -23,6 +25,7 @@
                   <td>{{$cobranza->formatted()}}</td>
                   <td> $ {{$cobranza->ammount}}</td>
                   <td>{{$cobranza->name}}</td>
+                  <td>{{$cobranza->referent}}</td>
 
                   <td>
                         <a href="{!! route('cobranzas.show', [$cobranza->id]) !!}" >Ver detalles</a>

@@ -47,7 +47,14 @@ class Cobranza extends Model
         'name',
         'origin',
         'destination',
-        'ceco_id'
+        'ceco_id',
+        'email',
+        'ceco_name',
+        'peaje',
+        'espera',
+        'adicional',
+        'total',
+        'referent'
     ];
 
     /**
@@ -67,7 +74,14 @@ class Cobranza extends Model
         'name' => 'string',
         'origin' => 'string',
         'destination' => 'string',
-        'ceco_id' => 'integer'
+        'ceco_id' => 'integer',
+        'email' => 'string',
+        'ceco_name' => 'string',
+        'peaje' => 'string',
+        'espera' => 'string',
+        'adicional' => 'string',
+        'total' => 'string',
+        'referent' => 'string'
     ];
 
     /**
@@ -78,8 +92,6 @@ class Cobranza extends Model
     public static $rules = [
         'operation_date' => 'required',
         'destination_dni' => 'required',
-        'sign' => 'required',
-        'ammount' => 'required'
     ];
 
     public function responsable() {
