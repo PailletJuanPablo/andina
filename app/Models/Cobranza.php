@@ -52,6 +52,7 @@ class Cobranza extends Model
         'espera',
         'adicional',
         'total',
+        'referent'
     ];
 
     /**
@@ -78,6 +79,7 @@ class Cobranza extends Model
         'espera' => 'string',
         'adicional' => 'string',
         'total' => 'string',
+        'referent' => 'string'
     ];
 
     /**

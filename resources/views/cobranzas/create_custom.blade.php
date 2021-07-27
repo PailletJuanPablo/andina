@@ -40,18 +40,22 @@
                     </div>
 
                     <!-- Origin Field -->
-                    <div class="form-group col-sm-6">
+                    <div class="form-group col-sm-5">
                         {!! Form::label('origin', 'Origen:') !!}
                         {!! Form::text('origin', null, ['class' => 'form-control', 'required' => true]) !!}
                     </div>
 
                     <!-- Destination Field -->
-                    <div class="form-group col-sm-6">
+                    <div class="form-group col-sm-5">
                         {!! Form::label('destination', 'Destino:') !!}
                         {!! Form::text('destination', null, ['class' => 'form-control', 'required' => true]) !!}
                     </div>
 
-
+   <!-- Destination Field -->
+   <div class="form-group col-sm-2">
+    {!! Form::label('referent', 'Referente:') !!}
+    {!! Form::text('referent', null, ['class' => 'form-control', 'required' => true]) !!}
+</div>
                     <!-- Name Field -->
                     <div class="form-group col-sm-3">
                         {!! Form::label('name', 'Nombre pasajero:') !!}

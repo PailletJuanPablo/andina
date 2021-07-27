@@ -1,12 +1,12 @@
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
         <div class="form-group">
             {!! Form::label('id', 'Identificador:') !!}
             <p>{!! $cobranza->id !!}</p>
         </div>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-2">
         <!-- Operation Date Field -->
         <div class="form-group">
             {!! Form::label('operation_date', 'Fecha y hora:') !!}
@@ -30,6 +30,17 @@
             <p>{!! $cobranza->destination !!}</p>
         </div>
     </div>
+
+    <div class="col-md-2">
+        <!-- Operation Date Field -->
+        <div class="form-group">
+            {!! Form::label('referent', 'Referente:') !!}
+            <p>{!! $cobranza->referent !!}
+            </p>
+
+        </div>
+    </div>
+
 
    
 
