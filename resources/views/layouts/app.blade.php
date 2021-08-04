@@ -90,13 +90,16 @@
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
 
-                                    @if (Auth::user()->company)
-                                    <img src="{{asset('images/claro.png')}}" class="img-circle" alt="RAI Empresas" />
+                                    @if (config('app.company_image'))
+                                    <img src="{{asset(config('app.company_image'))}}" class="user-image" alt="RAI Empresas" />
+    
                                     @else
-                                    <img src="{{asset('images/logo_rai.png')}}" style="background: white"
-                                        class="img-circle" alt="RAI Empresas" />
+                                    @if (Auth::user()->company)
+                                    @else
+                                    <img src="{{asset('images/logo_rai.png')}}" style="background: white" class="user-image"
+                                        alt="RAI Empresas" />
                                     @endif
-
+                                    @endif
 
                                     <p>
                                         {!! Auth::user()->first_name !!}
