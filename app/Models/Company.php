@@ -30,7 +30,8 @@ class Company extends Model
     public $fillable = [
         'title',
         'description',
-        'image'
+        'image',
+        'domain'
     ];
 
     /**
@@ -42,7 +43,8 @@ class Company extends Model
         'id' => 'integer',
         'title' => 'string',
         'description' => 'string',
-        'image' => 'string'
+        'image' => 'string',
+        'domain' => 'string'
     ];
 
     /**

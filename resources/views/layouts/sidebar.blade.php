@@ -7,11 +7,18 @@
         <div class="user-panel">
             <div class="pull-left image">
 
+                @if (config('app.company_image'))
+                <img src="{{asset(config('app.company_image'))}}" class="img-circle" alt="RAI Empresas" />
+
+                @else
                 @if (Auth::user()->company || Auth::user()->company_id == 9)
                 <img src="{{asset('images/claro.png')}}" class="img-circle" alt="RAI Empresas" />
                 @else
                 <img src="{{asset('images/logo_rai.png')}}" class="img-circle" alt="RAI Empresas" />
                 @endif
+                @endif
+
+               
 
             </div>
             <div class="pull-left info">
