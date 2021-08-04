@@ -69,12 +69,18 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
 
+                                @if (config('app.company_image'))
+                                <img src="{{asset(config('app.company_image'))}}" class="user-image" alt="RAI Empresas" />
+
+                                @else
                                 @if (Auth::user()->company)
-                                <img src="{{asset('images/claro.png')}}" class="user-image" alt="RAI Empresas" />
                                 @else
                                 <img src="{{asset('images/logo_rai.png')}}" style="background: white" class="user-image"
                                     alt="RAI Empresas" />
                                 @endif
+                                @endif
+
+                            
 
 
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
